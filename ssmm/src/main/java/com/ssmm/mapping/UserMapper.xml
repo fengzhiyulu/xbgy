@@ -9,19 +9,32 @@
 		<result column="password" property="password" jdbcType="VARCHAR" />
 		<result column="age" property="age" jdbcType="INTEGER" />
 	</resultMap>
-
-	<resultMap type="com.ssmm.model.User" id="UserWithBooks"
+	
+	<resultMap id="UserWithRoles" type="com.ssmm.model.User"
 		extends="BaseResultMap">
-		<collection property="books" ofType="com.ssmm.model.Book">
-			<id column="book_id" property="id" jdbcType="INTEGER" />
-		    <result column="book_name" property="name" jdbcType="VARCHAR" />
-		    <result column="book_price" property="price" jdbcType="DECIMAL" />
+		<collection property="roles" ofType="com.ssmm.model.Role">
+			<id column="id" property="id" jdbcType="INTEGER" />
+			<id column="desc" property="desc" jdbcType="VARCHAR" />
 		</collection>
 	</resultMap>
 
 	<sql id="Base_Column_List">
 		id, username, password, age
 	</sql>
+	
+	<select id="selectByUserName" resultMap="UserWithRoles" parameterType ="java.lang.String">
+		select
+			u.username,u.password,u.age,
+			r.id,r.desc
+		FROM USER u 
+		LEFT JOIN userRole ur
+		ON u.id = ur.user_id
+		LEFT JOIN role r
+		ON ur.role_id = r.id
+		WHERE username = #{username,jdbcType=VARCHAR}
+	</select>
+	
+	
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select
@@ -94,18 +107,4 @@
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 
-	<select id="getAll" resultMap="UserWithBooks">
-		select
-		u.id as id,
-		u.username as username,
-		u.password as password,
-		u.age as age,
-		b.id as book_id,
-		b.name as book_name,
-		b.price as book_price
-		from
-		user u
-		left join userbook ub on u.id = ub.user_id
-		left join book b on ub.book_id = b.id 
-	</select>
 </mapper>
