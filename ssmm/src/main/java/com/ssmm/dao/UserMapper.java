@@ -2,22 +2,22 @@ package com.ssmm.dao;
 
 import java.util.List;
 
-import com.ssmm.model.User;
+import com.ssmm.model.Account;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(User record);
+    int insert(Account record);
 
-    int insertSelective(User record);
+    int insertSelective(Account record);
 
-    User selectByPrimaryKey(Integer id);
+    Account selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(User record);
+    int updateByPrimaryKeySelective(Account record);
 
-    int updateByPrimaryKey(User record);
+    int updateByPrimaryKey(Account record);
     
-    List<User> getAll();
+    List<Account> getAll();
     
-    User selectByUserName(String username);
+    Account selectByUserName(String username);
 }

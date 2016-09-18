@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSON;
-import com.ssmm.model.User;
+import com.ssmm.model.Account;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring.xml",
@@ -30,19 +30,18 @@ public class TestUserService {
 	
 	@Test
 	public void getUserById(){
-//		配置了缓存，相同查询只会执行一次
-		User user = userService.getUserById(2);
+//		閰嶇疆浜嗙紦瀛橈紝鐩稿悓鏌ヨ鍙細鎵ц涓�
+		Account user = userService.getUserById(2);
 		logger.info(JSON.toJSONString(user));
-		User user2 = userService.getUserById(2);
+		Account user2 = userService.getUserById(2);
 		logger.info(JSON.toJSONString(user2));
-		User user3 = userService.getUserById(2);
+		Account user3 = userService.getUserById(2);
 		logger.info(JSON.toJSONString(user3));
 	}
 	
 	@Test
 	public void saveUser(){
-		User user = new User();
-		user.setAge(22);
+		Account user = new Account();
 		user.setUsername("test05");
 		user.setPassword("123456");
 		

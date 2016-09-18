@@ -1,19 +1,43 @@
 package com.ssmm.model;
 
-public class Role {
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.core.GrantedAuthority;
+
+/**
+ * ½ÇÉ«
+ * @author Administrator
+ *
+ */
+public class Role implements GrantedAuthority,ConfigAttribute{
 	
-	private Integer id;
-	private String desc;
-	public Integer getId() {
-		return id;
+	private Integer roleId;
+	private String roleName;
+	private String roleDesc;
+
+	public Integer getRoleId() {
+		return roleId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
-	public String getDesc() {
-		return desc;
+	public String getRoleName() {
+		return roleName;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+	public String getRoleDesc() {
+		return roleDesc;
+	}
+	public void setRoleDesc(String roleDesc) {
+		this.roleDesc = roleDesc;
+	}
+	@Override
+	public String getAuthority() {	//User
+		return roleName;
+	}
+	@Override
+	public String getAttribute() {	//Privilege
+		return roleName;
 	}
 }

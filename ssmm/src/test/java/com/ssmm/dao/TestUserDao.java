@@ -8,10 +8,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSON;
-import com.ssmm.model.User;
+import com.ssmm.model.Account;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring.xml",
@@ -33,8 +32,7 @@ public class TestUserDao {
 
 	@Test
 	public void insert(){
-		User user = new User();
-		user.setAge(18);
+		Account user = new Account();
 		user.setUsername("test02");
 		user.setPassword("123456");
 		
@@ -44,13 +42,13 @@ public class TestUserDao {
 	
 	@Test
 	public void getUserById() {
-		User user = userMapper.selectByPrimaryKey(1);
+		Account user = userMapper.selectByPrimaryKey(1);
 		logger.info(JSON.toJSONString(user));
 	}
 	
 	@Test
 	public void getAll(){
-		List<User> users = userMapper.getAll();
+		List<Account> users = userMapper.getAll();
 		logger.info(JSON.toJSONString(users));
 	}
 }
