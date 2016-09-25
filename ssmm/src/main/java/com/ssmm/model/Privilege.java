@@ -11,8 +11,8 @@ import org.springframework.security.access.ConfigAttribute;
  */
 public class Privilege {
 
-	private Integer id;
-	private String name;
+	private Integer priId;
+	private String priName;
 
 	private Collection<ConfigAttribute> roleSet;
 
@@ -25,20 +25,16 @@ public class Privilege {
 	/** default constructor */
 	public Privilege() {
 	}
-	/** full constructor */
-	public Privilege(String name) {
-		this.name = name;
+	public Integer getPriId() {
+		return priId;
 	}
-	public Integer getId() {
-		return this.id;
+	public void setPriId(Integer priId) {
+		this.priId = priId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public String getPriName() {
+		return priName;
 	}
-	public String getName() {
-		return this.name;
-	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPriName(String priName) {
+		this.priName = priName;
 	}
 }

@@ -7,16 +7,19 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.ssmm.dao.AccountMapper;
+import com.ssmm.model.Account;
 import com.ssmm.service.AccountSerivce;
 
 @Service("accountService")
 public class AccountSerivceImpl implements AccountSerivce{
 	@Resource
 	private AccountMapper accountMapper;
-	
+
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public Account getAccountByUsername(String username) {
 		return accountMapper.getAccountByUsername(username);
 	}
+	
+	
 
 }

@@ -6,8 +6,8 @@ package com.ssmm.model;
  *
  */
 public class Url {
-	private Integer id;
-	private String url;
+	private Integer urlId;
+	private String urlName;
 	private Privilege privilege;
 	
 	public Privilege getPrivilege() {
@@ -18,23 +18,19 @@ public class Url {
 		this.privilege = privilege;
 	}
 
-	/** default constructor */
-	public Url() {
+	public Integer getUrlId() {
+		return urlId;
 	}
 
-	public Integer getId() {
-		return this.id;
+	public void setUrlId(Integer urlId) {
+		this.urlId = urlId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public String getUrlName() {
+		return urlName;
 	}
 
-	public String getUrl() {
-		return this.url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
+	public void setUrlName(String urlName) {
+		this.urlName = urlName;
 	}
 }

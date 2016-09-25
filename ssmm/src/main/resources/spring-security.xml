@@ -12,7 +12,7 @@
 	http://www.springframework.org/schema/security/spring-security-4.1.xsd">
 	
 	<authentication-manager id="org.springframework.security.authenticationManager" alias="authenticationManager">
-		<authentication-provider user-service-ref="accountService"/>
+		<authentication-provider user-service-ref="securityUserDetailService"/>
 	</authentication-manager>
 	
 	<http use-expressions="true">
@@ -26,10 +26,11 @@
 	 	<!-- 注销也是由,Security框架来实现,LogoutFilter   -->
 	 	<logout logout-url="/j_spring_security_logout" logout-success-url="/login.jsp" invalidate-session="true"/>
 	 </http>
+	 
 	<beans:bean id = "filterSecurityInterceptor" class = "org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
 		<beans:property name="authenticationManager" ref="authenticationManager" />
-	 	<beans:property name="accessDecisionManager" ref="accessDecisionManager" />	 	
-	 	<beans:property name="securityMetadataSource" ref="urlService" />	 	
+	 	<beans:property name="accessDecisionManager" ref="securityAccessDecisionManager" />	 	
+	 	<beans:property name="securityMetadataSource" ref="securityUrlProvide" />	 	
 	</beans:bean>
 	<debug/>
 </beans:beans>

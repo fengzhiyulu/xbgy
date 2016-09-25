@@ -2,6 +2,9 @@ package com.ssmm.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface AccountSerivce extends UserDetailsService{
+import com.ssmm.model.Account;
 
+public interface AccountSerivce{
+
+	public Account getAccountByUsername(String username);
 }
