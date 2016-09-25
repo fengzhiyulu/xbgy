@@ -4,7 +4,10 @@ import java.util.Collection;
 
 import org.springframework.security.access.ConfigAttribute;
 
-public interface UrlService {
+import com.ssmm.core.service.BaseService;
+import com.ssmm.model.Url;
+
+public interface UrlService extends BaseService<Url>{
 	
 	public Collection<ConfigAttribute> getRoleByUrl(String urlString);
 	

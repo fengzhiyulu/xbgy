@@ -1,4 +1,4 @@
-package com.ssmm.security;
+package com.ssmm.core.security;
 
 import java.util.Collection;
 

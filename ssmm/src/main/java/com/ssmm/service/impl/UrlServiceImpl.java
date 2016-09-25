@@ -7,12 +7,13 @@ import javax.annotation.Resource;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.stereotype.Service;
 
+import com.ssmm.core.service.BaseServiceImpl;
 import com.ssmm.dao.UrlMapper;
 import com.ssmm.model.Url;
 import com.ssmm.service.UrlService;
 
 @Service("urlService")
-public class UrlServiceImpl implements UrlService{
+public class UrlServiceImpl extends BaseServiceImpl<Url> implements UrlService{
 
 	@Resource
 	private UrlMapper urlMapper;
