@@ -1,6 +1,6 @@
-package com.ssmm.dao;
+package com.xbgy.system.dao;
 
-import com.ssmm.model.Url;
+import com.xbgy.system.model.Url;
 
 public interface UrlMapper {
 

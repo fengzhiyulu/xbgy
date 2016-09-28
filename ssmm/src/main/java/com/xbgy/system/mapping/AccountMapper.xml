@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ssmm.dao.AccountMapper">
+<mapper namespace="com.xbgy.system.dao.AccountMapper">
     <cache readOnly="true"/>
     
-	<resultMap id="BaseResultMap" type="com.ssmm.model.Account">
+	<resultMap id="BaseResultMap" type="com.xbgy.system.model.Account">
 		<id column="accountId" property="accountId" jdbcType="INTEGER" />
 		<result column="username" property="username" jdbcType="VARCHAR" />
 		<result column="password" property="password" jdbcType="VARCHAR" />
 		<result column="fullName" property="fullName" jdbcType="VARCHAR" />
 	</resultMap>
 
-	<resultMap type="com.ssmm.model.Account" id="AccountWithRole"
+	<resultMap type="com.xbgy.system.model.Account" id="AccountWithRole"
 		extends="BaseResultMap">
 		<collection property="roleSet" ofType="com.ssmm.model.Role">
 			<id column="roleId" property="roleId" jdbcType="INTEGER" />

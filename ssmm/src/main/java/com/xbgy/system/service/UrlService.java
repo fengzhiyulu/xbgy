@@ -1,11 +1,11 @@
-package com.ssmm.service;
+package com.xbgy.system.service;
 
 import java.util.Collection;
 
 import org.springframework.security.access.ConfigAttribute;
 
-import com.ssmm.model.Url;
 import com.xbgy.core.service.BaseService;
+import com.xbgy.system.model.Url;
 
 public interface UrlService extends BaseService<Url>{
 	

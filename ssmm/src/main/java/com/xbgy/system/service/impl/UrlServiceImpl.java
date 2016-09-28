@@ -1,4 +1,4 @@
-package com.ssmm.service.impl;
+package com.xbgy.system.service.impl;
 
 import java.util.Collection;
 
@@ -7,10 +7,10 @@ import javax.annotation.Resource;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.stereotype.Service;
 
-import com.ssmm.dao.UrlMapper;
-import com.ssmm.model.Url;
-import com.ssmm.service.UrlService;
 import com.xbgy.core.service.BaseServiceImpl;
+import com.xbgy.system.dao.UrlMapper;
+import com.xbgy.system.model.Url;
+import com.xbgy.system.service.UrlService;
 
 @Service("urlService")
 public class UrlServiceImpl extends BaseServiceImpl<Url> implements UrlService{

@@ -1,4 +1,4 @@
-package com.ssmm.controller;
+package com.xbgy.system.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

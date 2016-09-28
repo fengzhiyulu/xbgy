@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ssmm.dao.PrivilegeMapper">
+<mapper namespace="com.xbgy.system.dao.PrivilegeMapper">
     <cache readOnly="true"/>
     
-	<resultMap id="BaseResultMap" type="com.ssmm.model.Url">
+	<resultMap id="BaseResultMap" type="com.xbgy.system.model.Url">
 		<id column="priId" property="priId" jdbcType="INTEGER" />
 		<result column="priName" property="priName" jdbcType="VARCHAR" />
 		<collection property="roleSet" ofType="com.ssmm.model.Role">

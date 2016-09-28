@@ -9,7 +9,7 @@ import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Component;
 
-import com.ssmm.service.UrlService;
+import com.xbgy.system.service.UrlService;
 
 @Component("securityUrlProvide")
 public class SecurityUrlProvide implements FilterInvocationSecurityMetadataSource{

@@ -1,4 +1,4 @@
-package com.ssmm.model;
+package com.xbgy.system.model;
 
 import java.util.Collection;
 

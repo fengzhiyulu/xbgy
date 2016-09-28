@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ssmm.dao.UrlMapper">
+<mapper namespace="com.xbgy.system.dao.UrlMapper">
     <cache readOnly="true"/>
     
-	<resultMap id="BaseResultMap" type="com.ssmm.model.Url">
+	<resultMap id="BaseResultMap" type="com.xbgy.system.model.Url">
 		<id column="urlId" property="urlId" jdbcType="INTEGER" />
 		<result column="urlName" property="urlName" jdbcType="VARCHAR" />
 		<association property="privilege" javaType="com.ssmm.model.Privilege">

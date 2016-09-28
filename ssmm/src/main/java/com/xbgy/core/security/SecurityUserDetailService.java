@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import com.ssmm.service.AccountSerivce;
+import com.xbgy.system.service.AccountSerivce;
 
 /**
  * 

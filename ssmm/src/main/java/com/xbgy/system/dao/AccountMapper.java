@@ -1,6 +1,6 @@
-package com.ssmm.dao;
+package com.xbgy.system.dao;
 
-import com.ssmm.model.Account;
+import com.xbgy.system.model.Account;
 
 public interface AccountMapper {
 

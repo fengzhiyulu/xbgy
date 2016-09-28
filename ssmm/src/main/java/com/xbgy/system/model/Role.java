@@ -1,4 +1,4 @@
-package com.ssmm.model;
+package com.xbgy.system.model;
 
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.core.GrantedAuthority;

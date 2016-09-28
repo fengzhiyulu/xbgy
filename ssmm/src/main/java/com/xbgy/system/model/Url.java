@@ -1,4 +1,4 @@
-package com.ssmm.model;
+package com.xbgy.system.model;
 
 /**
  * Â·¾¶
