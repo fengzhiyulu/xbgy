@@ -1,4 +1,4 @@
-package com.ssmm.core.dao;
+package com.xbgy.core.dao;
 
 import java.util.List;
 

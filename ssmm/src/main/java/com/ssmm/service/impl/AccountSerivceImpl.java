@@ -6,10 +6,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.ssmm.core.dao.BaseDaoImpl;
 import com.ssmm.dao.AccountMapper;
 import com.ssmm.model.Account;
 import com.ssmm.service.AccountSerivce;
+import com.xbgy.core.dao.BaseDaoImpl;
 
 @Service("accountService")
 public class AccountSerivceImpl extends BaseDaoImpl<Account> implements AccountSerivce{

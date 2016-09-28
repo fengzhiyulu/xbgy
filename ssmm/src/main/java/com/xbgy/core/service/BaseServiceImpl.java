@@ -1,4 +1,4 @@
-package com.ssmm.core.service;
+package com.xbgy.core.service;
 
 public class BaseServiceImpl<T> implements BaseService<T> {
 

@@ -4,8 +4,8 @@ import java.util.Collection;
 
 import org.springframework.security.access.ConfigAttribute;
 
-import com.ssmm.core.service.BaseService;
 import com.ssmm.model.Url;
+import com.xbgy.core.service.BaseService;
 
 public interface UrlService extends BaseService<Url>{
 	
