@@ -1,0 +1,5 @@
+https://marketplace.eclipse.org/content/mybatis-generator
+
+1. help->eclipse marketplace  
+2. search ÊäÈëÍøÖ·
+3. done
