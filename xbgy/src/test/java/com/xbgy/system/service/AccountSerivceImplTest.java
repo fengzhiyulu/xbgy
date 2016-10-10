@@ -1,4 +1,4 @@
-package com.xbgy.service;
+package com.xbgy.system.service;
 
 import static org.junit.Assert.*;
 

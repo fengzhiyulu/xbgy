@@ -1,4 +1,4 @@
-package com.xbgy.dao;
+package com.xbgy.system.dao;
 
 import javax.annotation.Resource;
 
@@ -14,16 +14,15 @@ import com.xbgy.system.model.Url;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring.xml",
 		"classpath:spring-mybatis.xml" })
-public class UrlMapperTest{
+public class UrlDaoTest{
 
 	@Resource
 	private UrlDao urlDao; 
 
 	@Test
 	public void getRoleByUrl() {
-		// TODO Auto-generated method stub
 		Url roleByUrl = urlDao.getRoleByUrl("/admin/save.jsp");
-		System.out.println(roleByUrl);
+		Assert.assertEquals(roleByUrl.getUrlId().toString(),"1");
 	}
 	
 	@Test

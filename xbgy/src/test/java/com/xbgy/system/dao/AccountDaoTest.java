@@ -1,15 +1,13 @@
-package com.xbgy.dao;
-
-import static org.junit.Assert.*;
+package com.xbgy.system.dao;
 
 import javax.annotation.Resource;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.xbgy.system.dao.AccountDao;
 import com.xbgy.system.model.Account;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,11 +20,9 @@ public class AccountDaoTest {
 	
 	@Test
 	public void selectOne() {
-		Account selectOne = accountDao.selectByPrimaryKey(1);
-		assertNotNull(selectOne);
-		
-		System.out.println(selectOne.getUsername());
-		System.out.println(selectOne.getPassword());
+		Account account = accountDao.selectByPrimaryKey(1);
+		Assert.assertEquals(account.getUsername(), "test01");
+		Assert.assertEquals(account.getPassword(), "test01");
 	}
 
 }

@@ -40,9 +40,7 @@ public abstract class BaseDaoImpl<T , PK extends Serializable> extends SqlSessio
 		ParameterizedType pt = (ParameterizedType) getClass()
 				.getGenericSuperclass();
 		clazz = (Class<T>) pt.getActualTypeArguments()[0];
-		mapperName = name.replace("Impl", "");
-		
-	//	System.out.println("**********" + name.replace("Impl", ""));
+		mapperName = name.replace("Impl", "").replace(".impl", "");
 	}
 
 	@Override
