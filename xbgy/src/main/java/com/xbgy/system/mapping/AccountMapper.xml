@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xbgy.system.dao.AccountMapper">
+<mapper namespace="com.xbgy.system.dao.AccountDao">
     <cache readOnly="true"/>
     
 	<resultMap id="BaseResultMap" type="com.xbgy.system.model.Account">
@@ -12,16 +12,13 @@
 
 	<resultMap type="com.xbgy.system.model.Account" id="AccountWithRole"
 		extends="BaseResultMap">
-		<collection property="roleSet" ofType="com.ssmm.model.Role">
+		<collection property="roleSet" ofType="com.xbgy.system.model.Role">
 			<id column="roleId" property="roleId" jdbcType="INTEGER" />
 		    <result column="roleName" property="roleName" jdbcType="VARCHAR" />
 		    <result column="roleDesc" property="roleDesc" jdbcType="VARCHAR" />
 		</collection>
 	</resultMap>
 
-	<sql id="Base_Column_List">
-		id, username, password, age
-	</sql>
 	<select id="getAccountByUsername" resultMap="AccountWithRole"
 		parameterType="java.lang.String">
 		select
@@ -31,4 +28,74 @@
 		where a.accountId = ar.aid and r.roleId = ar.rid
 		and a.username = #{username,jdbcType=VARCHAR}
 	</select>
+	
+	<!--  generator -->
+	<sql id="Base_Column_List">
+		accountId, username, fullName, password
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from account
+		where accountId = #{accountid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from account
+		where accountId = #{accountid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.xbgy.system.model.Account">
+		insert into account (accountId, username, fullName,
+		password)
+		values (#{accountid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
+		#{fullname,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.xbgy.system.model.Account" keyColumn="accountid" useGeneratedKeys="true">
+		insert into account
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="username != null">
+				username,
+			</if>
+			<if test="fullname != null">
+				fullName,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="fullname != null">
+				#{fullname,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.xbgy.system.model.Account">
+		update account
+		<set>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="fullname != null">
+				fullName = #{fullname,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where accountId = #{accountid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.xbgy.system.model.Account">
+		update account
+		set username = #{username,jdbcType=VARCHAR},
+		fullName = #{fullname,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR}
+		where accountId = #{accountid,jdbcType=INTEGER}
+	</update>
 </mapper>

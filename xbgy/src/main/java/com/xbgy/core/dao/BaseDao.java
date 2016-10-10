@@ -1,14 +1,23 @@
 package com.xbgy.core.dao;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface BaseDao<T> {
+public interface BaseDao<T , PK extends Serializable> {
 
-	public void insert(T t);
+	public Integer insert(T t);
 	
-	public void insertBatch(List<T> list);
+	public Integer insertSelective(T t);
 	
-	public void update(T t);
+	public Integer insertBatch(List<T> list);
 	
-	public void delete(T t);
+	public Integer update(T t);
+	
+	public Integer updateByPrimaryKeySelective(T t);
+	
+	public Integer delete(PK id);
+	
+	public T selectByPrimaryKey(PK id);
+	
+	public List<T> selectList();
 }

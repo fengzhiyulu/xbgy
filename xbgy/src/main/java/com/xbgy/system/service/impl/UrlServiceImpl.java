@@ -8,7 +8,7 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.stereotype.Service;
 
 import com.xbgy.core.service.BaseServiceImpl;
-import com.xbgy.system.dao.UrlMapper;
+import com.xbgy.system.dao.UrlDao;
 import com.xbgy.system.model.Url;
 import com.xbgy.system.service.UrlService;
 
@@ -16,7 +16,7 @@ import com.xbgy.system.service.UrlService;
 public class UrlServiceImpl extends BaseServiceImpl<Url> implements UrlService{
 
 	@Resource
-	private UrlMapper urlMapper;
+	private UrlDao urlDao;
 	
 	/**
 	 * 根据路径获取所有拥有权限的角色
@@ -24,7 +24,7 @@ public class UrlServiceImpl extends BaseServiceImpl<Url> implements UrlService{
 	 * @return
 	 */
 	public Collection<ConfigAttribute> getRoleByUrl(String urlString){
-		Url url = urlMapper.getRoleByUrl(urlString);
+		Url url = urlDao.getRoleByUrl(urlString);
 		if(url != null && url.getPrivilege() != null){
 			return url.getPrivilege().getRoleSet();
 		}else{
