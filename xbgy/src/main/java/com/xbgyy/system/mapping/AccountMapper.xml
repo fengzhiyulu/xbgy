@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xbgyy.system.dao.AccountMapper">
+  <resultMap id="BaseResultMap" type="com.xbgyy.system.model.Account">
+    <id column="accountId" jdbcType="INTEGER" property="accountid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="fullName" jdbcType="VARCHAR" property="fullname" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    accountId, username, fullName, password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where accountId = #{accountid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from account
+    where accountId = #{accountid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xbgyy.system.model.Account">
+    insert into account (accountId, username, fullName, 
+      password)
+    values (#{accountid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{fullname,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xbgyy.system.model.Account">
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accountid != null">
+        accountId,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="fullname != null">
+        fullName,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null">
+        #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xbgyy.system.model.Account">
+    update account
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null">
+        fullName = #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where accountId = #{accountid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xbgyy.system.model.Account">
+    update account
+    set username = #{username,jdbcType=VARCHAR},
+      fullName = #{fullname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where accountId = #{accountid,jdbcType=INTEGER}
+  </update>
+</mapper>
