@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xbgyy.system.dao.UrlDao">
+  <resultMap id="BaseResultMap" type="com.xbgyy.system.model.Url">
+    <id column="urlId" jdbcType="INTEGER" property="urlid" />
+    <result column="urlName" jdbcType="VARCHAR" property="urlname" />
+    <result column="priId" jdbcType="INTEGER" property="priid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urlId, urlName, priId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from url
+    where urlId = #{urlid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from url
+    where urlId = #{urlid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xbgyy.system.model.Url">
+    insert into url (urlId, urlName, priId
+      )
+    values (#{urlid,jdbcType=INTEGER}, #{urlname,jdbcType=VARCHAR}, #{priid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xbgyy.system.model.Url">
+    insert into url
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urlid != null">
+        urlId,
+      </if>
+      <if test="urlname != null">
+        urlName,
+      </if>
+      <if test="priid != null">
+        priId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urlid != null">
+        #{urlid,jdbcType=INTEGER},
+      </if>
+      <if test="urlname != null">
+        #{urlname,jdbcType=VARCHAR},
+      </if>
+      <if test="priid != null">
+        #{priid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xbgyy.system.model.Url">
+    update url
+    <set>
+      <if test="urlname != null">
+        urlName = #{urlname,jdbcType=VARCHAR},
+      </if>
+      <if test="priid != null">
+        priId = #{priid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where urlId = #{urlid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xbgyy.system.model.Url">
+    update url
+    set urlName = #{urlname,jdbcType=VARCHAR},
+      priId = #{priid,jdbcType=INTEGER}
+    where urlId = #{urlid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -3,14 +3,17 @@
 <mapper namespace="com.xbgy.system.dao.PrivilegeDao">
     <cache readOnly="true"/>
     
-	<resultMap id="BaseResultMap" type="com.xbgy.system.model.Url">
+	<resultMap id="BaseResultMap" type="com.xbgy.system.model.Privilege">
 		<id column="priId" property="priId" jdbcType="INTEGER" />
 		<result column="priName" property="priName" jdbcType="VARCHAR" />
-		<collection property="roleSet" ofType="com.xbgy.system.model.Role">
-			<id column="roleId" property="roleId" jdbcType="INTEGER" />
-		    <result column="roleName" property="roleName" jdbcType="VARCHAR" />
-		    <result column="roleDesc" property="roleDesc" jdbcType="VARCHAR" />
+		<collection property="roleSet" ofType="com.xbgy.system.model.Role" resultMap="roleMap">
 		</collection>
+	</resultMap>
+	
+	<resultMap id="roleMap" type="com.xbgy.system.model.Role" >
+		<id column="roleId" property="roleId" jdbcType="INTEGER" />
+	    <result column="roleName" property="roleName" jdbcType="VARCHAR" />
+	    <result column="roleDesc" property="roleDesc" jdbcType="VARCHAR" />
 	</resultMap>
 	
 	<select id="getRolesByPrivilege" resultMap="BaseResultMap" parameterType="java.lang.Integer">
