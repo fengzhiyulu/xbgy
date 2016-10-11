@@ -12,10 +12,7 @@
 
 	<resultMap type="com.xbgy.system.model.Account" id="AccountWithRole"
 		extends="BaseResultMap">
-		<collection property="roleSet" ofType="com.xbgy.system.model.Role">
-			<id column="roleId" property="roleId" jdbcType="INTEGER" />
-		    <result column="roleName" property="roleName" jdbcType="VARCHAR" />
-		    <result column="roleDesc" property="roleDesc" jdbcType="VARCHAR" />
+		<collection property="roleSet" ofType="com.xbgy.system.model.Role" resultMap="com.xbgy.system.dao.roleDao.BaseResultMap">
 		</collection>
 	</resultMap>
 

@@ -22,13 +22,15 @@ public class UrlDaoTest{
 	@Test
 	public void getRoleByUrl() {
 		Url roleByUrl = urlDao.getRoleByUrl("/admin/save.jsp");
+		System.out.println(roleByUrl.getPrivilege().getPriName());
 		Assert.assertEquals(roleByUrl.getUrlId().toString(),"1");
 	}
 	
 	@Test
 	public void selectOne() {
 		Url selectOne = urlDao.selectByPrimaryKey(1);
-		Assert.assertNotNull(selectOne);
+		System.out.println(selectOne.getPrivilege().getPriName());
+		Assert.assertEquals(selectOne.getUrlName(), "/admin/save.jsp");
 	}
 	
 
