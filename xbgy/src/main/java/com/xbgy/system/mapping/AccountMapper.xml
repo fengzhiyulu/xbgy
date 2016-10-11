@@ -4,10 +4,10 @@
     <cache readOnly="true"/>
     
 	<resultMap id="BaseResultMap" type="com.xbgy.system.model.Account">
-		<id column="accountId" property="accountId" jdbcType="INTEGER" />
+		<id column="account_Id" property="accountId" jdbcType="INTEGER" />
 		<result column="username" property="username" jdbcType="VARCHAR" />
 		<result column="password" property="password" jdbcType="VARCHAR" />
-		<result column="fullName" property="fullName" jdbcType="VARCHAR" />
+		<result column="full_Name" property="fullName" jdbcType="VARCHAR" />
 	</resultMap>
 
 	<resultMap type="com.xbgy.system.model.Account" id="AccountWithRole"
@@ -19,43 +19,43 @@
 	<select id="getAccountByUsername" resultMap="AccountWithRole"
 		parameterType="java.lang.String">
 		select
-			a.accountId,a.username,a.password,a.fullName,
-			r.roleId,r.roleName,r.roleDesc
+			a.account_Id,a.username,a.password,a.full_Name,
+			r.role_Id,r.role_Name,r.role_Desc
 		from account a,account_role ar,role r
-		where a.accountId = ar.aid and r.roleId = ar.rid
+		where a.account_Id = ar.account_id and r.role_Id = ar.role_id
 		and a.username = #{username,jdbcType=VARCHAR}
 	</select>
 	
 	<!--  generator -->
 	<sql id="Base_Column_List">
-		accountId, username, fullName, password
+		account_Id, username, full_name, password
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
 		resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
 		from account
-		where accountId = #{accountid,jdbcType=INTEGER}
+		where account_Id = #{accountId,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from account
-		where accountId = #{accountid,jdbcType=INTEGER}
+		where account_Id = #{accountId,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.xbgy.system.model.Account">
-		insert into account (accountId, username, fullName,
+		insert into account (account_Id, username, full_name,
 		password)
-		values (#{accountid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
-		#{fullname,jdbcType=VARCHAR},
+		values (#{accountId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
+		#{fullName,jdbcType=VARCHAR},
 		#{password,jdbcType=VARCHAR})
 	</insert>
-	<insert id="insertSelective" parameterType="com.xbgy.system.model.Account" keyColumn="accountid" useGeneratedKeys="true">
+	<insert id="insertSelective" parameterType="com.xbgy.system.model.Account" keyColumn="accountId" useGeneratedKeys="true">
 		insert into account
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="username != null">
 				username,
 			</if>
-			<if test="fullname != null">
-				fullName,
+			<if test="fullName != null">
+				full_name,
 			</if>
 			<if test="password != null">
 				password,
@@ -65,8 +65,8 @@
 			<if test="username != null">
 				#{username,jdbcType=VARCHAR},
 			</if>
-			<if test="fullname != null">
-				#{fullname,jdbcType=VARCHAR},
+			<if test="fullName != null">
+				#{fullName,jdbcType=VARCHAR},
 			</if>
 			<if test="password != null">
 				#{password,jdbcType=VARCHAR},
@@ -79,20 +79,20 @@
 			<if test="username != null">
 				username = #{username,jdbcType=VARCHAR},
 			</if>
-			<if test="fullname != null">
-				fullName = #{fullname,jdbcType=VARCHAR},
+			<if test="fullName != null">
+				full_name = #{fullName,jdbcType=VARCHAR},
 			</if>
 			<if test="password != null">
 				password = #{password,jdbcType=VARCHAR},
 			</if>
 		</set>
-		where accountId = #{accountid,jdbcType=INTEGER}
+		where account_Id = #{accountId,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.xbgy.system.model.Account">
 		update account
 		set username = #{username,jdbcType=VARCHAR},
-		fullName = #{fullname,jdbcType=VARCHAR},
+		full_name = #{fullName,jdbcType=VARCHAR},
 		password = #{password,jdbcType=VARCHAR}
-		where accountId = #{accountid,jdbcType=INTEGER}
+		where account_Id = #{accountId,jdbcType=INTEGER}
 	</update>
 </mapper>

@@ -4,8 +4,8 @@
     <cache readOnly="true"/>
     
 	<resultMap id="BaseResultMap" type="com.xbgy.system.model.Privilege">
-		<id column="priId" property="priId" jdbcType="INTEGER" />
-		<result column="priName" property="priName" jdbcType="VARCHAR" />
+		<id column="pri_Id" property="priId" jdbcType="INTEGER" />
+		<result column="pri_Name" property="priName" jdbcType="VARCHAR" />
 		<collection property="roleSet" ofType="com.xbgy.system.model.Role" resultMap="com.xbgy.system.dao.roleDao.BaseResultMap">
 		</collection>
 	</resultMap>
@@ -13,11 +13,11 @@
 	
 	<select id="getRolesByPrivilege" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select
-			p.priId,p.priName,
-			r.roleId,r.roleName,r.roleDesc
+			p.pri_id,p.pri_Name,
+			r.role_id,r.role_Name,r.role_Desc
 		from privilege p,privilege_role pr,role r
-		where p.priId = pr.pId and r.roleId = pr.rid
-		and p.priId = #{url,jdbcType=INTEGER}
+		where p.pri_Id = pr.pri_Id and r.role_Id = pr.role_id
+		and p.pri_Id = #{url,jdbcType=INTEGER}
 	</select>
 	
 </mapper>
