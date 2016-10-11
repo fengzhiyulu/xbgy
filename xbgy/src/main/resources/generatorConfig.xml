@@ -24,7 +24,8 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.xbgyy.system.dao" targetProject="xbgy">    
             <property name="enableSubPackages" value="true"/>    
         </javaClientGenerator>    
-        <table tableName="url" mapperName = "UrlDao" domainObjectName="Url" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <!-- <table tableName="url" mapperName = "UrlDao" domainObjectName="Url" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table> --> 
+		<table tableName="role" mapperName = "roleDao" domainObjectName="Role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <!-- <table tableName="account" domainObjectName="Account" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table> -->    
         </context>    
 </generatorConfiguration> 
