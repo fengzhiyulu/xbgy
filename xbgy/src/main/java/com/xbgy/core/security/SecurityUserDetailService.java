@@ -23,7 +23,7 @@ public class SecurityUserDetailService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
-		return accountService.getAccountByUsername(username);
+		return accountService.getAccountWithRolesByUsername(username);
 	}
 
 }

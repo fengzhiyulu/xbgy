@@ -11,64 +11,64 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 @Repository("baseDao")
-public abstract class BaseDaoImpl<T , PK extends Serializable> extends SqlSessionDaoSupport implements BaseDao<T,PK>{
-	
+public abstract class BaseDaoImpl<T, PK extends Serializable> extends SqlSessionDaoSupport implements BaseDao<T, PK> {
+
 	@Resource
 	@Override
 	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
 		// TODO Auto-generated method stub
 		super.setSqlSessionFactory(sqlSessionFactory);
 	}
-	
-	private final String POSTFIX = "Dao";  
-	  
-    private final String _INSERT = ".insert";  
-  
-    private final String _INSERTSELECTIVE = ".insertSelective";  
-  
-    private final String _SELECTBYPRIMARYKEY = ".selectByPrimaryKey";  
-  
-    private final String _UPDATEBYPRIMARYKEY = ".updateByPrimaryKey";  
-  
-    private final String _UPDATEBYPRIMARYKEYSELECTIVE = ".updateByPrimaryKeySelective";  
-  
-    private final String _DELETEBYPRIMARYKEY = ".deleteByPrimaryKey";  
-	
+
+	private final String POSTFIX = "Dao";
+
+	private final String _INSERT = ".insert";
+
+	private final String _INSERTSELECTIVE = ".insertSelective";
+
+	private final String _SELECTBYPRIMARYKEY = ".selectByPrimaryKey";
+
+	private final String _UPDATEBYPRIMARYKEY = ".updateByPrimaryKey";
+
+	private final String _UPDATEBYPRIMARYKEYSELECTIVE = ".updateByPrimaryKeySelective";
+
+	private final String _DELETEBYPRIMARYKEY = ".deleteByPrimaryKey";
+
 	@SuppressWarnings("unchecked")
 	public BaseDaoImpl() {
 		String name = this.getClass().getName();
-		ParameterizedType pt = (ParameterizedType) getClass()
-				.getGenericSuperclass();
+		ParameterizedType pt = (ParameterizedType) getClass().getGenericSuperclass();
 		clazz = (Class<T>) pt.getActualTypeArguments()[0];
 		mapperName = name.replace("Impl", "").replace(".impl", "");
 	}
 
 	@Override
 	public Integer insert(T t) {
-		// TODO Auto-generated method stub
 		return getSqlSession().insert(mapperName + _INSERT, t);
 	}
 
 	@Override
-	public Integer insertBatch(List<T> list) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer insert(String method, Object entity) {
+		return getSqlSession().insert(mapperName + method, entity);
+	}
+
+	@Override
+	public Integer insertSelective(T t) {
+		return getSqlSession().insert(mapperName + _INSERTSELECTIVE, t);
 	}
 
 	@Override
 	public Integer update(T t) {
 		return getSqlSession().update(mapperName + _UPDATEBYPRIMARYKEY, t);
 	}
-	
+
 	@Override
-	public Integer insertSelective(T t) {
-		// TODO Auto-generated method stub
-		return getSqlSession().insert(mapperName + _INSERTSELECTIVE, t);
+	public Integer update(String method, Object entity) {
+		return getSqlSession().update(mapperName + method, entity);
 	}
 
 	@Override
 	public Integer updateByPrimaryKeySelective(T t) {
-		// TODO Auto-generated method stub
 		return getSqlSession().insert(mapperName + _UPDATEBYPRIMARYKEYSELECTIVE, t);
 	}
 
@@ -76,13 +76,16 @@ public abstract class BaseDaoImpl<T , PK extends Serializable> extends SqlSessio
 	public Integer delete(PK id) {
 		return getSqlSession().delete(mapperName + _DELETEBYPRIMARYKEY, id);
 	}
-	
+
+	public Integer delete(String method, Object obj) {
+		return getSqlSession().delete(mapperName + method, obj);
+	}
+
 	@Override
 	public T selectByPrimaryKey(PK id) {
-		//System.out.println("******" + mapperName);
-		return getSqlSession().selectOne(mapperName + _SELECTBYPRIMARYKEY,id);
+		return getSqlSession().selectOne(mapperName + _SELECTBYPRIMARYKEY, id);
 	}
-	
+
 	@Override
 	public List<T> selectList() {
 		// TODO Auto-generated method stub
@@ -95,6 +98,7 @@ public abstract class BaseDaoImpl<T , PK extends Serializable> extends SqlSessio
 	public String getMapperName() {
 		return mapperName;
 	}
+
 	public void setMapperName(String mapperName) {
 		this.mapperName = mapperName;
 	}

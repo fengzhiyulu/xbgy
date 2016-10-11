@@ -15,8 +15,16 @@
 		<collection property="roleSet" ofType="com.xbgy.system.model.Role" resultMap="com.xbgy.system.dao.roleDao.BaseResultMap">
 		</collection>
 	</resultMap>
+		
+	<select id="getAccountByUsername" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from account
+		where username = #{username,jdbcType=INTEGER}
+	</select>
 
-	<select id="getAccountByUsername" resultMap="AccountWithRole"
+	<select id="getAccountWithRolesByUsername" resultMap="AccountWithRole"
 		parameterType="java.lang.String">
 		select
 			a.account_Id,a.username,a.password,a.full_Name,

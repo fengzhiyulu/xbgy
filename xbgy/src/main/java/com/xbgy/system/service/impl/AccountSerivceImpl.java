@@ -18,6 +18,12 @@ public class AccountSerivceImpl extends BaseServiceImpl<Account> implements Acco
 	public Account getAccountByUsername(String username) {
 		return accountDao.getAccountByUsername(username);
 	}
+
+	@Override
+	public Account getAccountWithRolesByUsername(String username) {
+		// TODO Auto-generated method stub
+		return accountDao.getAccountWithRolesByUsername(username);
+	}
 	
 	
 

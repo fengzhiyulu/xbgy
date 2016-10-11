@@ -9,13 +9,17 @@ public interface BaseDao<T , PK extends Serializable> {
 	
 	public Integer insertSelective(T t);
 	
-	public Integer insertBatch(List<T> list);
+	public Integer insert(String method , Object enity);
 	
 	public Integer update(T t);
+	
+	public Integer update(String method , Object enity);
 	
 	public Integer updateByPrimaryKeySelective(T t);
 	
 	public Integer delete(PK id);
+	
+	public Integer delete(String method , Object enity);
 	
 	public T selectByPrimaryKey(PK id);
 	
