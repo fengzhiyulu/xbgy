@@ -16,12 +16,20 @@
 		</collection>
 	</resultMap>
 		
-	<select id="getAccountByUsername" parameterType="java.lang.String"
+	<select id="getAccountByUsername" parameterType="Account"
 		resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
 		from account
-		where username = #{username,jdbcType=INTEGER}
+		where username = #{username} AND password = #{password}
+	</select>
+	
+	<select id="getAccountByUsernameAndPassword" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from account
+		where username = #{username}
 	</select>
 
 	<select id="getAccountWithRolesByUsername" resultMap="AccountWithRole"

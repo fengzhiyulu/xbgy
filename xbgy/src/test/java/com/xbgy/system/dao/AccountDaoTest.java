@@ -24,6 +24,12 @@ public class AccountDaoTest{
 		Assert.assertEquals(account.getUsername(), "test01");
 		Assert.assertEquals(account.getPassword(), "test01");
 	}
+	@Test
+	public void getAccountByUsernameAndPassword(){
+		Account myAccount = new Account("admin","admin");
+		Account account = accountDao.getAccountByUsernameAndPassword(myAccount);
+		Assert.assertNotNull(account);
+	}
 	
 	@Test
 	public void insert(){
