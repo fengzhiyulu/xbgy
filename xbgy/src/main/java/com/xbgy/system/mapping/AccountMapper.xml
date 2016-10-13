@@ -3,14 +3,14 @@
 <mapper namespace="com.xbgy.system.dao.AccountDao">
     <cache readOnly="true"/>
     
-	<resultMap id="BaseResultMap" type="com.xbgy.system.model.Account">
+	<resultMap id="BaseResultMap" type="Account">
 		<id column="account_Id" property="accountId" jdbcType="INTEGER" />
 		<result column="username" property="username" jdbcType="VARCHAR" />
 		<result column="password" property="password" jdbcType="VARCHAR" />
 		<result column="full_Name" property="fullName" jdbcType="VARCHAR" />
 	</resultMap>
 
-	<resultMap type="com.xbgy.system.model.Account" id="AccountWithRole"
+	<resultMap type="Account" id="AccountWithRole"
 		extends="BaseResultMap">
 		<collection property="roleSet" ofType="com.xbgy.system.model.Role" resultMap="com.xbgy.system.dao.roleDao.BaseResultMap">
 		</collection>
@@ -57,14 +57,14 @@
 		delete from account
 		where account_Id = #{accountId,jdbcType=INTEGER}
 	</delete>
-	<insert id="insert" parameterType="com.xbgy.system.model.Account">
-		insert into account (account_Id, username, full_name,
+	<insert id="insert" parameterType="Account" useGeneratedKeys="true" keyColumn="account_id">
+		insert into account (username, full_name,
 		password)
-		values (#{accountId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
+		values (#{username,jdbcType=VARCHAR},
 		#{fullName,jdbcType=VARCHAR},
 		#{password,jdbcType=VARCHAR})
 	</insert>
-	<insert id="insertSelective" parameterType="com.xbgy.system.model.Account" keyColumn="accountId" useGeneratedKeys="true">
+	<insert id="insertSelective" parameterType="Account" keyColumn="accountId" useGeneratedKeys="true">
 		insert into account
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="username != null">
@@ -89,7 +89,7 @@
 			</if>
 		</trim>
 	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="com.xbgy.system.model.Account">
+	<update id="updateByPrimaryKeySelective" parameterType="Account">
 		update account
 		<set>
 			<if test="username != null">
@@ -104,7 +104,7 @@
 		</set>
 		where account_Id = #{accountId,jdbcType=INTEGER}
 	</update>
-	<update id="updateByPrimaryKey" parameterType="com.xbgy.system.model.Account">
+	<update id="updateByPrimaryKey" parameterType="Account">
 		update account
 		set username = #{username,jdbcType=VARCHAR},
 		full_name = #{fullName,jdbcType=VARCHAR},

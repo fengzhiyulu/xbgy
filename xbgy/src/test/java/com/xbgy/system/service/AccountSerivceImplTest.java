@@ -1,23 +1,22 @@
 package com.xbgy.system.service;
 
-import static org.junit.Assert.*;
-
-import java.util.Collection;
+import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.xbgy.system.service.impl.AccountSerivceImpl;
+import com.xbgy.system.model.Account;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring.xml",
 		"classpath:spring-mybatis.xml" })
-public class AccountSerivceImplTest extends AccountSerivceImpl{
+public class AccountSerivceImplTest{
 
+	@Resource
+	public AccountService accountService;
+	
 	@Test
 	public void testLoadUserByUsername() {
 //		UserDetails loadUserByUsername = super.loadUserByUsername("test01");
@@ -25,6 +24,12 @@ public class AccountSerivceImplTest extends AccountSerivceImpl{
 //		String password = loadUserByUsername.getPassword();
 //		
 //		assertEquals("test01", password);
+	}
+	
+	@Test
+	public void testRegister() throws Exception{
+		Account account = new Account("adminTest","adminTest");
+		accountService.register(account);
 	}
 
 }

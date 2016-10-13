@@ -8,10 +8,10 @@ import org.springframework.util.DigestUtils;
 import com.xbgy.core.service.BaseServiceImpl;
 import com.xbgy.system.dao.AccountDao;
 import com.xbgy.system.model.Account;
-import com.xbgy.system.service.AccountSerivce;
+import com.xbgy.system.service.AccountService;
 
 @Service("accountService")
-public class AccountSerivceImpl extends BaseServiceImpl<Account> implements AccountSerivce{
+public class AccountSerivceImpl extends BaseServiceImpl<Account> implements AccountService{
 	@Resource
 	private AccountDao accountDao;
 
@@ -26,7 +26,7 @@ public class AccountSerivceImpl extends BaseServiceImpl<Account> implements Acco
 	@Override
 	public void register(Account account) throws Exception {
 		if(isAccountExists(account.getUsername())){
-			throw new Exception();
+			throw new Exception("");
 		}
 		account.setPassword(DigestUtils.md5DigestAsHex(account.getPassword().getBytes()));	//MD5 º”√‹
 		accountDao.insert(account);
