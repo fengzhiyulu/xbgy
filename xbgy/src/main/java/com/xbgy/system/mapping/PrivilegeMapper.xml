@@ -6,7 +6,7 @@
 	<resultMap id="BaseResultMap" type="com.xbgy.system.model.Privilege">
 		<id column="pri_Id" property="priId" jdbcType="INTEGER" />
 		<result column="pri_Name" property="priName" jdbcType="VARCHAR" />
-		<collection property="roleSet" ofType="com.xbgy.system.model.Role" resultMap="com.xbgy.system.dao.roleDao.BaseResultMap">
+		<collection property="roleSet" ofType="Role" resultMap="com.xbgy.system.dao.roleDao.BaseResultMap">
 		</collection>
 	</resultMap>
 

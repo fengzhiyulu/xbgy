@@ -2,10 +2,12 @@ package com.xbgy.system.service.impl;
 
 import javax.annotation.Resource;
 
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import com.xbgy.core.service.BaseServiceImpl;
+import com.xbgy.core.utils.CodingUtil;
 import com.xbgy.system.dao.AccountDao;
 import com.xbgy.system.model.Account;
 import com.xbgy.system.service.AccountService;
@@ -26,9 +28,10 @@ public class AccountSerivceImpl extends BaseServiceImpl<Account> implements Acco
 	@Override
 	public void register(Account account) throws Exception {
 		if(isAccountExists(account.getUsername())){
-			throw new Exception("");
+			throw new Exception("111");
 		}
-		account.setPassword(DigestUtils.md5DigestAsHex(account.getPassword().getBytes()));	//MD5 º”√‹
+		
+		account.setPassword(CodingUtil.encodingByMd5(account.getPassword()));	//MD5 º”√‹
 		accountDao.insert(account);
 	}
 	@Override

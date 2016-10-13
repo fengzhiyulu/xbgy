@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xbgy.system.dao.AccountDao">
-    <cache readOnly="true"/>
+    <!-- <cache readOnly="true"/> -->
     
 	<resultMap id="BaseResultMap" type="Account">
 		<id column="account_Id" property="accountId" jdbcType="INTEGER" />
@@ -12,7 +12,7 @@
 
 	<resultMap type="Account" id="AccountWithRole"
 		extends="BaseResultMap">
-		<collection property="roleSet" ofType="com.xbgy.system.model.Role" resultMap="com.xbgy.system.dao.roleDao.BaseResultMap">
+		<collection property="roleSet" ofType="Role" resultMap="com.xbgy.system.dao.roleDao.BaseResultMap">
 		</collection>
 	</resultMap>
 		

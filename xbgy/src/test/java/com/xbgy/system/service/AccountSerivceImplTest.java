@@ -31,5 +31,11 @@ public class AccountSerivceImplTest{
 		Account account = new Account("adminTest","adminTest");
 		accountService.register(account);
 	}
+	
+	@Test
+	public void testLogin() throws Exception{
+		Account account = accountService.getAccountWithRolesByUsername("test01");
+		System.out.println(account);
+	}
 
 }
