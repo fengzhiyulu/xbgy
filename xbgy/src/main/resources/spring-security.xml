@@ -12,7 +12,9 @@
 	http://www.springframework.org/schema/security/spring-security-4.1.xsd">
 	
 	<authentication-manager id="org.springframework.security.authenticationManager" alias="authenticationManager">
-		<authentication-provider user-service-ref="securityUserDetailService"/>
+		<authentication-provider user-service-ref="securityUserDetailService">
+			<password-encoder hash="md5"><salt-source user-property="password"/></password-encoder>
+		</authentication-provider>
 	</authentication-manager>
 	
 	<http use-expressions="true">
