@@ -3,7 +3,6 @@ package com.xbgy.shop.service.impl;
 import java.util.Map;
 
 import com.xbgy.core.dao.Condition;
-import com.xbgy.shop.controller.impl.subType.OrderInfo;
 import com.xbgy.shop.model.XShopCustom;
 import com.xbgy.shop.model.XShopLocation;
 import com.xbgy.shop.model.XShopOrder;
@@ -28,39 +27,6 @@ public class XShopOrderServiceImpl extends XShopBaseService implements XShopOrde
 	}
 	public void viewOrders(){
 		
-	}
-	
-	/**
-	 * 获取客户信息
-	 * @param orderInfo
-	 * @return
-	 */
-	public XShopCustom getCutsomInfo(OrderInfo orderInfo){
-		Condition cond = new Condition();
-		if(!isEmpty(orderInfo.getTelephone())){
-			cond.addFilter("telePhone", orderInfo.getTelephone());
-		}
-		if(!isEmpty(orderInfo.getCustomName())){
-			cond.addFilter("custom", orderInfo.getCustomName());
-		}
-		return null;
-	}
-	
-	/**
-	 * 获取位置信息
-	 * @param orderInfo
-	 * @return
-	 */
-	public String getLocationId(OrderInfo orderInfo){
-		Condition cond = new Condition();
-		if(!isEmpty(orderInfo.getTelephone())){
-			cond.addFilter("telePhone", orderInfo.getTelephone());
-		}
-		if(!isEmpty(orderInfo.getCustomName())){
-			cond.addFilter("custom", orderInfo.getCustomName());
-		}
-		
-		return null;
 	}
 	public XShopCustom getCustomInfo(Map<String,String> cond){
 		

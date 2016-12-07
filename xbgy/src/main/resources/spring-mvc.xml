@@ -13,7 +13,13 @@
 
 	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
 	<mvc:annotation-driven/>
+	<mvc:resources location="/" mapping="/**/*.html"/>  
+	<mvc:resources location="/" mapping="/**/*.js"/>  
+	<mvc:resources location="/" mapping="/**/*.css"/>  
+	<mvc:resources location="/" mapping="/**/*.png"/>  
+	<mvc:resources location="/" mapping="/**/*.gif"/>
 	<context:component-scan base-package="com.xbgy.system.controller" />
+	<context:component-scan base-package="com.xbgy.shop.controller" />
 
 	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 
 	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">

@@ -7,21 +7,7 @@ import com.xbgy.shop.service.XShopCustomService;
 public class XShopCustomServiceImpl extends XShopBaseService implements XShopCustomService{
 
 	@Override
-	public XShopCustom select(XShopCustom custom) {
-		return null;
-	}
-
-	@Override
-	public XShopCustom insert(XShopCustom custom) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public XShopCustom selectOrInsert(XShopCustom custom) {
 		return null;
 	}
-	
-	
-
 }

@@ -11,7 +11,7 @@ import com.xbgy.shop.service.XShopCustomService;
  */
 public class XShopBaseController {
 	
-	@Resource
+	//@Resource
 	public XShopCustomService customService;
 	
 	public static boolean isEmpty(Object obj){

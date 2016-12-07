@@ -1,6 +1,5 @@
 package com.xbgy.shop.controller;
 
-import com.xbgy.shop.controller.impl.subType.OrderInfo;
 import com.xbgy.shop.model.XShopCustom;
 import com.xbgy.shop.model.XShopLocation;
 
