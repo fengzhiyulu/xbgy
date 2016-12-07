@@ -10,4 +10,16 @@ public class XShopCustomServiceImpl extends XShopBaseService implements XShopCus
 	public XShopCustom selectOrInsert(XShopCustom custom) {
 		return null;
 	}
+
+	@Override
+	public XShopCustom select(XShopCustom custom) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public XShopCustom insert(XShopCustom custom) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
