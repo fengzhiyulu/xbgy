@@ -4,11 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="">
 <title>Insert title here</title>
 </head>
 <body>
-这是登录页面
-<form>
+这是登录页面q
+<form action = "${pageContext.request.contextPath}/login.action" method = "post">
 	<input type = "text" name = "username">
 	<input type = "text" name = "password">
 	<input type="submit" value="tijiao">
