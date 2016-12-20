@@ -1,6 +1,10 @@
 package com.xbgy.shop.service.impl;
 
+import java.util.Map;
+
+import com.xbgy.core.dao.Condition;
 import com.xbgy.shop.controller.impl.subType.OrderInfo;
+import com.xbgy.shop.model.XShopCustom;
 import com.xbgy.shop.model.XShopOrder;
 import com.xbgy.shop.service.XShopBaseService;
 import com.xbgy.shop.service.XShopOrderService;
@@ -9,6 +13,9 @@ import com.xbgy.shop.util.Const;
 public class XShopOrderServiceImpl extends XShopBaseService implements XShopOrderService{
 
 	public XShopOrder createOrder(OrderInfo orderInfo) {
+		
+		XShopCustom custom = getCutsomInfo(orderInfo);
+		
 		XShopOrder order = buildOrder(orderInfo);
 		
 		return order;
@@ -25,6 +32,23 @@ public class XShopOrderServiceImpl extends XShopBaseService implements XShopOrde
 		
 	}
 	
+	public XShopCustom getCutsomInfo(OrderInfo orderInfo){
+		Condition cond = new Condition();
+		if(!isEmpty(orderInfo.getTelephone())){
+			cond.addFilter("telePhone", orderInfo.getTelephone());
+		}
+		if(!isEmpty(orderInfo.getCustomName())){
+			cond.addFilter("custom", orderInfo.getCustomName());
+		}
+		return null;
+	}
+	
+	public XShopCustom getCustomInfo(Map<String,String> cond){
+		
+		
+		return null;
+	}
+	
 	private XShopOrder buildOrder(OrderInfo orderInfo){
 		XShopOrder order = new XShopOrder();
 		order.setOrderId("");						//TODO 构造一个快递订单号
@@ -35,4 +59,6 @@ public class XShopOrderServiceImpl extends XShopBaseService implements XShopOrde
 		order.setCreateUser(getUserId());
 		return order;
 	}
+	
+	
 }

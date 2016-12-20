@@ -30,7 +30,8 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.xbgyy.system.dao" targetProject="xbgy">    
             <property name="enableSubPackages" value="true"/>    
         </javaClientGenerator>    
-        <!-- 要生成哪些表-->    
+        <!-- 要生成哪些表-->   
+        
         <table tableName="account" domainObjectName="Account" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>    
         </context>    
 </generatorConfiguration> 

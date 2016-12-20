@@ -5,7 +5,7 @@ package com.xbgy.shop.model;
  * @author Administrator
  *
  */
-public class XShopCustom {
+public class XShopCustom extends BaseObject{
 	
 	private String customId;			//客户编号
 	private String customName;			//客户名称
