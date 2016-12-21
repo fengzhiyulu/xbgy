@@ -7,9 +7,11 @@ package com.xbgy.shop.controller.impl.subType;
  */
 public class OrderInfo {
 	
+	private String customId;
 	private String customName;			//客户名称
 	private String companyName;
 	private String telephone;
+	private String locId;				//位置			
 	private String proCode;				//省code
 	private String cityCode;
 	private String districtCode;		//区县code
@@ -69,5 +71,11 @@ public class OrderInfo {
 	}
 	public void setOrderQty(Integer orderQty) {
 		this.orderQty = orderQty;
+	}
+	public String getLocId() {
+		return locId;
+	}
+	public void setLocId(String locId) {
+		this.locId = locId;
 	}
 }

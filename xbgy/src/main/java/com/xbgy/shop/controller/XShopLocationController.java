@@ -1,6 +1,8 @@
 package com.xbgy.shop.controller;
 
 import com.xbgy.shop.controller.impl.subType.OrderInfo;
+import com.xbgy.shop.model.XShopCustom;
+import com.xbgy.shop.model.XShopLocation;
 
 /**
  * 快递地址
@@ -13,5 +15,5 @@ public interface XShopLocationController {
 	 * 添加一条快递订单
 	 * @return
 	 */
-	public String addShopOrder(OrderInfo orderInfo);
+	public String addShopOrder(XShopCustom custom,XShopLocation location,String goodsId,Integer orderQty);
 }
