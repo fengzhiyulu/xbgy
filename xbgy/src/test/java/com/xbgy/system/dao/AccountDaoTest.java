@@ -13,7 +13,7 @@ import com.xbgy.system.model.Account;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring.xml",
 		"classpath:spring-mybatis.xml" })
-public class AccountDaoTest {
+public class AccountDaoTest{
 
 	@Resource(name = "accountDao")
 	public AccountDao accountDao;
@@ -23,6 +23,33 @@ public class AccountDaoTest {
 		Account account = accountDao.selectByPrimaryKey(1);
 		Assert.assertEquals(account.getUsername(), "test01");
 		Assert.assertEquals(account.getPassword(), "test01");
+	}
+	@Test
+	public void getAccountByUsernameAndPassword(){
+		Account myAccount = new Account("admin","admin");
+		Account account = accountDao.getAccountByUsernameAndPassword(myAccount);
+		Assert.assertNotNull(account);
+	}
+	
+	@Test
+	public void insert(){
+		Account acc = accountDao.getAccountByUsername("admin");
+		if(acc != null){
+			accountDao.delete(acc.getAccountId());
+		}
+		Account account = new Account();
+		account.setUsername("admin");
+		account.setPassword("amdin");
+		account.setFullName("Grubby");
+		accountDao.insert(account);
+	}
+	
+	@Test
+	public void delete(){
+		Account acc = accountDao.getAccountByUsername("admin");
+		if(acc != null){
+			accountDao.delete(acc.getAccountId());
+		}
 	}
 
 }

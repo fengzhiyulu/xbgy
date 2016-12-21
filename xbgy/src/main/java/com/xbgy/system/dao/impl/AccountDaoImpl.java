@@ -17,4 +17,15 @@ public class AccountDaoImpl extends BaseDaoImpl<Account, Serializable> implement
 					.getAccountByUsername(username);
 	}
 
+	@Override
+	public Account getAccountWithRolesByUsername(String username) {
+		return getSqlSession().getMapper(AccountDao.class)
+				.getAccountWithRolesByUsername(username);
+	}
+
+	@Override
+	public Account getAccountByUsernameAndPassword(Account account) {
+		return getSqlSession().getMapper(AccountDao.class)
+				.getAccountByUsernameAndPassword(account);
+	}
 }

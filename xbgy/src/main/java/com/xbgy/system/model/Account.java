@@ -19,6 +19,11 @@ public class Account implements UserDetails{
 	private String fullName;
 	private Set<Role> roleSet;
 	
+	public Account(){}
+	public Account(String username , String passoword){
+		this.username = username;
+		this.password = passoword;
+	}
 	public Integer getAccountId() {
 		return accountId;
 	}

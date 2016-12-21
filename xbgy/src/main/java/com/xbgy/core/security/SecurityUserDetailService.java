@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import com.xbgy.system.service.AccountSerivce;
+import com.xbgy.system.service.AccountService;
 
 /**
  * 
@@ -18,12 +18,12 @@ import com.xbgy.system.service.AccountSerivce;
 public class SecurityUserDetailService implements UserDetailsService{
 	
 	@Resource
-	private AccountSerivce accountService;
+	private AccountService accountService;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
-		return accountService.getAccountByUsername(username);
+		return accountService.getAccountWithRolesByUsername(username);
 	}
 
 }
