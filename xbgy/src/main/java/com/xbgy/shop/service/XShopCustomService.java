@@ -1,12 +1,14 @@
 package com.xbgy.shop.service;
 
+import java.util.List;
+
 import com.xbgy.shop.model.XShopCustom;
 
 public interface XShopCustomService {
 
-	public XShopCustom select(XShopCustom custom);
+	public List<XShopCustom> select(String customName);
 	
-	public XShopCustom insert(XShopCustom custom);
+	public void insert(XShopCustom custom);
 	
 	public XShopCustom selectOrInsert(XShopCustom custom);
 }

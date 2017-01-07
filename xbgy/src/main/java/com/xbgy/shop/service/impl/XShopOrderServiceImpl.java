@@ -1,11 +1,5 @@
 package com.xbgy.shop.service.impl;
 
-import java.util.Map;
-
-import com.xbgy.core.dao.Condition;
-import com.xbgy.shop.controller.impl.subType.OrderInfo;
-import com.xbgy.shop.model.XShopCustom;
-import com.xbgy.shop.model.XShopLocation;
 import com.xbgy.shop.model.XShopOrder;
 import com.xbgy.shop.service.XShopBaseService;
 import com.xbgy.shop.service.XShopOrderService;
@@ -14,9 +8,9 @@ import com.xbgy.shop.util.Const;
 
 public class XShopOrderServiceImpl extends XShopBaseService implements XShopOrderService{
 	
-	public void insertOrder(XShopCustom custom,XShopLocation location,String goodsId,Integer orderQty) {
-		XShopOrder order = buildOrder(custom.getCustomId(),location.getLocId(),goodsId,orderQty);
-																											//TODO 插入一条order
+	public void insertOrder(String customId,String locId,String goodCode,Double orderQty) {
+		XShopOrder order = buildOrder(customId, locId, goodCode, orderQty);
+		
 	}
 	
 	public void updateOrder(){
@@ -31,57 +25,19 @@ public class XShopOrderServiceImpl extends XShopBaseService implements XShopOrde
 	}
 	
 	/**
-	 * 获取客户信息
-	 * @param orderInfo
-	 * @return
-	 */
-	public XShopCustom getCutsomInfo(OrderInfo orderInfo){
-		Condition cond = new Condition();
-		if(!isEmpty(orderInfo.getTelephone())){
-			cond.addFilter("telePhone", orderInfo.getTelephone());
-		}
-		if(!isEmpty(orderInfo.getCustomName())){
-			cond.addFilter("custom", orderInfo.getCustomName());
-		}
-		return null;
-	}
-	
-	/**
-	 * 获取位置信息
-	 * @param orderInfo
-	 * @return
-	 */
-	public String getLocationId(OrderInfo orderInfo){
-		Condition cond = new Condition();
-		if(!isEmpty(orderInfo.getTelephone())){
-			cond.addFilter("telePhone", orderInfo.getTelephone());
-		}
-		if(!isEmpty(orderInfo.getCustomName())){
-			cond.addFilter("custom", orderInfo.getCustomName());
-		}
-		
-		return null;
-	}
-	public XShopCustom getCustomInfo(Map<String,String> cond){
-		
-		
-		return null;
-	}
-	
-	/**
 	 * 
 	 * @param orderId
 	 * @param customId
-	 * @param goodsId
+	 * @param goodCode
 	 * @param orderQty
 	 * @return
 	 */
-	private XShopOrder buildOrder(String customId,String locId,String goodsId,Integer orderQty){
+	private XShopOrder buildOrder(String customId,String locId,String goodCode,Double orderQty){
 		XShopOrder order = new XShopOrder();
 		order.setOrderId(CommonUtil.getOrderId());						//TODO 构造一个快递订单号
 		order.setCustomId(customId);
 		order.setLocId(locId);
-		order.setGoodsId(goodsId);
+		order.setGoodCode(goodCode);
 		order.setOrderQty(orderQty);
 		order.setOrderStatus(Const.Order_Status_New);
 		order.setCreateTime(getNowTimeString());

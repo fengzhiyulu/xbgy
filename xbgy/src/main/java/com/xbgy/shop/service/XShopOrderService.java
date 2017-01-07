@@ -1,13 +1,9 @@
 package com.xbgy.shop.service;
 
-import com.xbgy.shop.controller.impl.subType.OrderInfo;
-import com.xbgy.shop.model.XShopCustom;
-import com.xbgy.shop.model.XShopLocation;
-
 public interface XShopOrderService {
 
 	/**
 	 * 创建一个快递打印单信息
 	 */
-	public void insertOrder(XShopCustom custom,XShopLocation location,String goodsId,Integer orderQty);
+	public void insertOrder(String customId,String locId,String goodCode,Double orderQty);
 }
