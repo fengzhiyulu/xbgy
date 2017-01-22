@@ -11,8 +11,8 @@ public class XShopOrder {
 	private String orderStatus;		//订单状态	CREATE 新建 FINISH 打印完成	 DELETE  删除
 	private String customId;
 	private String locId;
-	private String goodsId;			//商品名称
-	private Integer orderQty;		//订单数量
+	private String goodCode;			//商品名称
+	private Double orderQty;		//订单数量
 	private String createTime;
 	private String createUser;
 	private String updateTime;
@@ -41,16 +41,16 @@ public class XShopOrder {
 	public void setLocId(String locId) {
 		this.locId = locId;
 	}
-	public String getGoodsId() {
-		return goodsId;
+	public String getGoodCode() {
+		return goodCode;
 	}
-	public void setGoodsId(String goodsId) {
-		this.goodsId = goodsId;
+	public void setGoodCode(String goodCode) {
+		this.goodCode = goodCode;
 	}
-	public Integer getOrderQty() {
+	public Double getOrderQty() {
 		return orderQty;
 	}
-	public void setOrderQty(Integer orderQty) {
+	public void setOrderQty(Double orderQty) {
 		this.orderQty = orderQty;
 	}
 	public String getCreateTime() {
