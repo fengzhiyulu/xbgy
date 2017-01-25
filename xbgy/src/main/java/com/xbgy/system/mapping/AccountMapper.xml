@@ -44,7 +44,7 @@
 	
 	<!--  generator -->
 	<sql id="Base_Column_List">
-		account_Id, username, full_name, password
+		accountId, username, fullname, password
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
 		resultMap="BaseResultMap">

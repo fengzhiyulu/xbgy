@@ -25,7 +25,6 @@ public class AccountDaoImpl extends BaseDaoImpl<Account, Serializable> implement
 
 	@Override
 	public Account getAccountByUsernameAndPassword(Account account) {
-		return getSqlSession().getMapper(AccountDao.class)
-				.getAccountByUsernameAndPassword(account);
+		return getSqlSession().getMapper(AccountDao.class).getAccountByUsernameAndPassword(account);
 	}
 }

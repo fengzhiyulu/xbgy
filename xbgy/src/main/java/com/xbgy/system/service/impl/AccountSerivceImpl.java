@@ -41,4 +41,9 @@ public class AccountSerivceImpl extends BaseServiceImpl<Account> implements Acco
 	public boolean isAccountExists(String username) {
 		return accountDao.getAccountByUsername(username) != null;
 	}
+	@Override
+	public boolean login(Account account){
+		account = accountDao.getAccountByUsernameAndPassword(account);
+		return account != null;
+	}
 }

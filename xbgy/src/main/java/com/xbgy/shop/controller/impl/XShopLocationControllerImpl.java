@@ -17,7 +17,7 @@ import com.xbgy.shop.service.XShopOrderService;
 @RequestMapping("/express")
 public class XShopLocationControllerImpl extends XShopBaseController implements XShopLocationController{
 
-	@Resource
+//	@Resource
 	private XShopOrderService orderService;
 	
 	@RequestMapping(value = "test" ,method = RequestMethod.GET)
