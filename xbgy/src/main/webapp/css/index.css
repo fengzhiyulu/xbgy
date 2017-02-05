@@ -164,3 +164,13 @@ h6, .h6 {
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+
+/*×ó²àµ¼º½Ìõ*/
+.nav-sidebar {
+  margin-bottom: 20px;
+}
+
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}

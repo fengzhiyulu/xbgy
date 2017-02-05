@@ -2,13 +2,33 @@ package com.xbgy.system.service;
 
 import java.util.Collection;
 
-import org.springframework.security.access.ConfigAttribute;
+import javax.annotation.Resource;
 
-import com.xbgy.core.service.BaseService;
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.stereotype.Service;
+
+import com.xbgy.core.service.BaseServiceImpl;
+import com.xbgy.system.dao.UrlDao;
 import com.xbgy.system.model.Url;
 
-public interface UrlService extends BaseService<Url>{
+@Service("urlService")
+public class UrlService extends BaseService{
+
+	@Resource
+	private UrlDao urlDao;
 	
-	public Collection<ConfigAttribute> getRoleByUrl(String urlString);
-	
+	/**
+	 * 根据路径获取所有拥有权限的角色
+	 * @param urlString
+	 * @return
+	 */
+	public Collection<ConfigAttribute> getRoleByUrl(String urlString){
+		Url url = urlDao.getRoleByUrl(urlString);
+		if(url != null && url.getPrivilege() != null){
+			return url.getPrivilege().getRoleSet();
+		}else{
+			return null;
+		}
+	}
+
 }
