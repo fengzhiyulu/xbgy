@@ -1,6 +1,7 @@
 package com.xbgy.system.dao.impl;
 
 import java.io.Serializable;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +25,7 @@ public class AccountDaoImpl extends BaseDaoImpl<Account, Serializable> implement
 	}
 
 	@Override
-	public Account getAccountByUsernameAndPassword(Account account) {
-		return getSqlSession().getMapper(AccountDao.class).getAccountByUsernameAndPassword(account);
+	public Account getAccountByUsernameAndPassword(Map<String, Object> map) {
+		return getSqlSession().getMapper(AccountDao.class).getAccountByUsernameAndPassword(map);
 	}
 }

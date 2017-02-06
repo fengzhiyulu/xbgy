@@ -1,5 +1,8 @@
 package com.xbgy.system.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -26,7 +29,6 @@ public class AccountService extends BaseService{
 		if(isAccountExists(account.getUsername())){
 			throw new Exception("111");
 		}
-		
 		account.setPassword(CodingUtil.encodingByMd5(account.getPassword()));	//MD5 º”√‹
 		accountDao.insert(account);
 	}
@@ -35,8 +37,10 @@ public class AccountService extends BaseService{
 	public boolean isAccountExists(String username) {
 		return accountDao.getAccountByUsername(username) != null;
 	}
-	public boolean login(Account account){
-		account = accountDao.getAccountByUsernameAndPassword(account);
-		return account != null;
+	public Account login(String username,String password){
+		Map<String, Object> map = new HashMap<>();
+		map.put("username", username);
+		map.put("password", password);
+		return accountDao.getAccountByUsernameAndPassword(map);
 	}
 }

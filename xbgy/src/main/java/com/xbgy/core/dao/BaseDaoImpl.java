@@ -16,7 +16,6 @@ public abstract class BaseDaoImpl<T, PK extends Serializable> extends SqlSession
 	@Resource
 	@Override
 	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
-		// TODO Auto-generated method stub
 		super.setSqlSessionFactory(sqlSessionFactory);
 	}
 

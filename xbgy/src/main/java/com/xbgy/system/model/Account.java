@@ -1,29 +1,19 @@
 package com.xbgy.system.model;
 
-import java.util.Collection;
-import java.util.Set;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 /**
  * ’Àªß
  * @author Administrator
  *
  */
-public class Account implements UserDetails{
+public class Account{
 	
 	private Integer accountId;
 	private String username;
 	private String password;
 	private String fullName;
-	private Set<Role> roleSet;
+	private String accountType;
 	
 	public Account(){}
-	public Account(String username , String passoword){
-		this.username = username;
-		this.password = passoword;
-	}
 	public Integer getAccountId() {
 		return accountId;
 	}
@@ -46,37 +36,11 @@ public class Account implements UserDetails{
 		return fullName;
 	}
 	public void setFullName(String fullName) {
-		this.fullName = fullName;
+		this.fullName = fullName;	}
+	public String getAccountType() {
+		return accountType;
 	}
-	public Set<Role> getRoleSet() {
-		return roleSet;
-	}
-	public void setRoleSet(Set<Role> roleSet) {
-		this.roleSet = roleSet;
-	}
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return roleSet;
-	}
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
 	}
 }

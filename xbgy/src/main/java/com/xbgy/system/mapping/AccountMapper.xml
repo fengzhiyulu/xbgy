@@ -7,44 +7,28 @@
 		<id column="account_Id" property="accountId" jdbcType="INTEGER" />
 		<result column="username" property="username" jdbcType="VARCHAR" />
 		<result column="password" property="password" jdbcType="VARCHAR" />
-		<result column="full_Name" property="fullName" jdbcType="VARCHAR" />
+		<result column="fullname" property="fullName" jdbcType="VARCHAR" />
+		<result column="account_type" property="accountType" jdbcType="VARCHAR" />
 	</resultMap>
 
-	<resultMap type="Account" id="AccountWithRole"
-		extends="BaseResultMap">
-		<collection property="roleSet" ofType="Role" resultMap="com.xbgy.system.dao.roleDao.BaseResultMap">
-		</collection>
-	</resultMap>
-		
 	<select id="getAccountByUsername" parameterType="Account"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from account
+		where username = #{username} 
+	</select>
+	
+	<select id="getAccountByUsernameAndPassword" parameterType="java.util.Map"
 		resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
 		from account
 		where username = #{username} AND password = #{password}
 	</select>
-	
-	<select id="getAccountByUsernameAndPassword" parameterType="java.lang.String"
-		resultMap="BaseResultMap">
-		select
-		<include refid="Base_Column_List" />
-		from account
-		where username = #{username}
-	</select>
-
-	<select id="getAccountWithRolesByUsername" resultMap="AccountWithRole"
-		parameterType="java.lang.String">
-		select
-			a.account_Id,a.username,a.password,a.full_Name,
-			r.role_Id,r.role_Name,r.role_Desc
-		from account a,account_role ar,role r
-		where a.account_Id = ar.account_id and r.role_Id = ar.role_id
-		and a.username = #{username,jdbcType=VARCHAR}
-	</select>
-	
 	<!--  generator -->
 	<sql id="Base_Column_List">
-		accountId, username, fullname, password
+		accountId, username, fullname, password,account_type
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
 		resultMap="BaseResultMap">
